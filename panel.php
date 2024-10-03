@@ -13,7 +13,7 @@
 <br><br>
 
 <table align="center" border="1" cellspacing="0" bgcolor="lightgray" width="800">
-    <tr>
+    <tr bgcolor="lightblue">
         <td>NOMBRE</td>
         <td>APELLIDO</td>
         <td>CÓDIGO UNIVERSITARIO</td>
@@ -22,7 +22,7 @@
         <td>RESULTADO</td>
     </tr>
 
-<?php
+    <?php
 
 
 $fila = file("registro.xls");
@@ -32,34 +32,37 @@ $total = 0;
 $cantBeneficiario = 0;
 $cantNoBeneficiario = 0;
 
-$fila = file("registro.xls");
 
-for ($i = 0; $i < count($fila); $i++) {
-    $total++;
-    list($nombre, $apellido, $codigo, $telefono, $puntos, $resultado) = explode("\t", trim($fila[$i]));
+if (empty($fila)) {
+    echo '<tr><td colspan="6" style="text-align:center;">No hay información disponible</td></tr>';
+} else {
+    for ($i = 0; $i < count($fila); $i++) {
+        $total++;
+        list($nombre, $apellido, $codigo, $telefono, $puntos, $resultado) = explode("\t", trim($fila[$i]));
 
 
+        if (trim($resultado) == "Beneficiario") {
+            $cantBeneficiario++;
+        } else {
+            $cantNoBeneficiario++;
+        }
+        ?>
 
-    
-    if (trim($resultado) == "Beneficiario") {
-        $cantBeneficiario++;
-    } else {
-        $cantNoBeneficiario++;
+        <tr>
+        <tr>
+            <td style="text-align: center;"><?php echo htmlspecialchars($nombre); ?></td>
+            <td style="text-align: center;"><?php echo htmlspecialchars($apellido); ?></td>
+            <td style="text-align: center;"><?php echo htmlspecialchars($codigo); ?></td>
+            <td style="text-align: center;"><?php echo htmlspecialchars($telefono); ?></td>
+            <td style="text-align: center;"><?php echo htmlspecialchars($puntos); ?></td>
+            <td style="text-align: center;"><?php echo htmlspecialchars($resultado); ?></td>
+        </tr>
+
+        < /tr>
+            <?php
     }
-?>
-
-    <tr>
-        <td><?php echo htmlspecialchars($nombre); ?></td>
-        <td><?php echo htmlspecialchars($apellido); ?></td>
-        <td><?php echo htmlspecialchars($codigo); ?></td>
-        <td><?php echo htmlspecialchars($telefono); ?></td>
-        <td><?php echo htmlspecialchars($puntos); ?></td>
-        <td><?php echo htmlspecialchars($resultado); ?></td>
-    </tr>
-  
-<?php 
 }
-?>    
+?>
 
 </table>
 
@@ -68,5 +71,7 @@ for ($i = 0; $i < count($fila); $i++) {
 <p>Total de Beneficiarios: <?php echo $cantBeneficiario; ?></p>
 <p>Total de No Beneficiarios: <?php echo $cantNoBeneficiario; ?></p>
 
+
 </body>
+
 </html>
