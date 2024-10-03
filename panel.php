@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel De Alumnos</title>
+    <link rel="stylesheet" href="css/estilo.css">
 </head>
 <body>
     
@@ -23,10 +24,10 @@
 
 <?php
 
-// Leer el archivo donde se guardan los registros
+
 $fila = file("registro.xls");
 
-// Inicializar contadores
+
 $total = 0;
 $cantBeneficiario = 0;
 $cantNoBeneficiario = 0;
@@ -36,10 +37,10 @@ $fila = file("registro.xls");
 for ($i = 0; $i < count($fila); $i++) {
     $total++;
     list($nombre, $apellido, $codigo, $telefono, $puntos, $resultado) = explode("\t", trim($fila[$i]));
-    // Procesar cada línea...
 
 
-    // Contar los resultados
+
+    
     if (trim($resultado) == "Beneficiario") {
         $cantBeneficiario++;
     } else {

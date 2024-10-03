@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,26 +8,44 @@
     <link rel="stylesheet" href="css/estilo.css">
 
 </head>
+
 <body>
-    <center><h1>Encuesta Socioeconómica</h1></center>
-    
+    <center>
+        <h1>Encuesta Socioeconómica</h1>
+    </center>
+
     <form action="p_encuesta.php" method="post">
         <table align="center" cellpadding="10">
             <tr>
                 <td>Nombre:</td>
-                <td><input type="text" name="nombre" class="caja" required></td>
+                <td><input type="text" name="nombre" class="caja" 
+               required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ ]+" 
+               title="Solo se permiten letras." 
+               placeholder="Ingrese su Nombre" 
+               oninput="this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ ]/g, '')"></td>
             </tr>
             <tr>
                 <td>Apellido:</td>
-                <td><input type="text" name="apellido" class="caja" required></td>
+                <td><input type="text" name="apellido" class="caja" placeholder="Escribe tu Apellido" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ ]+" 
+               title="Solo se permiten letras." 
+               placeholder="Ingrese su Apellido" 
+               oninput="this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ ]/g, '')"></td>
             </tr>
             <tr>
                 <td>Código Universitario:</td>
-                <td><input type="text" name="codigo" class="caja" required></td>
+                <td><input type="text" name="codigo" class="caja" placeholder="Introduce tu C.U." required pattern="[0-9]+" 
+               title="Solo se permiten letras." maxlength="10" 
+               placeholder="Ingrese su C.U." 
+               oninput="this.value = this.value.replace(/[^0-9 ]/g, '')"></td>
             </tr>
             <tr>
                 <td>Teléfono:</td>
-                <td><input type="text" name="telefono" class="caja" required></td>
+                <td><input type="text" name="telefono" class="caja" 
+                required 
+                pattern="^[0-9]{9}$" 
+       title="Solo se permiten 9 dígitos."
+       placeholder="999999999" maxlength="9"
+       oninput="this.value = this.value.replace(/[^0-9]/g, '')"></td>
             </tr>
             <tr>
                 <td>1. ¿Cuenta con servicio a internet?</td>
@@ -81,4 +100,5 @@
         </table>
     </form>
 </body>
+
 </html>

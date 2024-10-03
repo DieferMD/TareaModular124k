@@ -63,13 +63,13 @@ if ($puntos > 15 && $internet == "no") {
     $resultado = "Beneficiario";
     echo "<script>
         alert('Felicidades eres beneficiario');
-        window.location.href = 'panel.php'; // Redirigir de vuelta al formulario o a otra página
+        window.location.href = 'panel.php'; 
       </script>";
 } else{
     $resultado = "No Beneficiario";
     echo "<script>
         alert('No eres beneficiario');
-        window.location.href = 'panel.php'; // Redirigir de vuelta al formulario o a otra página
+        window.location.href = 'panel.php'; 
       </script>";
 }
 
